@@ -1,0 +1,10 @@
+{
+    "function2_options":"test",
+    "time_delta":7,
+    "geo_files":["Tormaresca", "Casillo"],
+    "time_window":{
+        "start":[2021,1,1],
+        "end":[2022,1,1]
+    },
+    "doc": "Count files"
+}

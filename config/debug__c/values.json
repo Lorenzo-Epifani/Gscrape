@@ -1,0 +1,16 @@
+{
+    "debug_options":"test",
+    "geo_files":["Tormaresca", "Casillo"],
+    "time_window":{
+        "start":[2021,1,1],
+        "end":[2022,1,1]
+    },
+    "time_delta":7,
+    "limit":1,
+    "overwrite":{
+        "flag": true,
+        "root": "14_09_2022_11_51_41"
+    },
+    "timeout_sec":300,
+    "doc": "Download files\n"
+}

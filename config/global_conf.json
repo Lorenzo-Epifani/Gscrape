@@ -1,0 +1,13 @@
+{
+    "sources": {
+        "bananamusic": {
+            "url": "https://www.bananamusic.it/",
+            "agent": 1
+        },
+        "gasmusicstore": {
+            "url": "https://www.gasmusicstore.com/",
+            "agent": 1
+        }
+    },
+    "doc": "todo"
+}
