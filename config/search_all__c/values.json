@@ -1,4 +1,5 @@
 {   
-    "query":"fender",
-    "doc": "Count files"
+    "query":"chitarra",
+    "doc": "Count files",
+    "limit":0
 }

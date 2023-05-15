@@ -9,9 +9,9 @@ from time import sleep
 from itertools import count
 
 meta={
-    'NAME' : 'name',
-    'BASEURL' : 'baseurl', #BASEURL WITH BACKSLASH INCLUDED
-    'LOCATION' :['continent','state','city']
+    'NAME' : 'fireflyaudio',
+    'BASEURL' : 'https://www.fireflyaudio.it/', #BASEURL WITH BACKSLASH INCLUDED
+    'LOCATION' :['EU','Italy','Potenza']
 }
 
 def search_on_site(query):
