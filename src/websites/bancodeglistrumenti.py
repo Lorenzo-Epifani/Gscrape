@@ -8,10 +8,12 @@ from src.classes.query import Query
 from time import sleep
 from itertools import count
 
+
+status=["DEV"]
 meta={
     'NAME' : 'name',
     'BASEURL' : 'baseurl', #BASEURL WITH BACKSLASH INCLUDED
-    'LOCATION' :['continent','state','city']
+    'LOCATION' :['EU','Italy','city']
 }
 
 def search_on_site(query):

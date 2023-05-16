@@ -7,6 +7,7 @@ from src.classes.query import Query
 from time import sleep
 from itertools import count
 
+status=["OK"]
 meta={
     'NAME' : 'gasmusicstore',
     'BASEURL' : 'https://www.gasmusicstore.com/',

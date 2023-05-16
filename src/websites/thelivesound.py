@@ -8,6 +8,7 @@ from src.classes.query import Query
 from time import sleep
 from itertools import count
 
+status=["DEV"]
 meta={
     'NAME' : 'thelivesound',
     'BASEURL' : 'https://negoziodimusica.com/', #BASEURL WITH BACKSLASH INCLUDED

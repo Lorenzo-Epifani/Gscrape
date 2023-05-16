@@ -9,36 +9,35 @@ from time import sleep
 from itertools import count
 
 
-status=["OK"]
+status=["DEV"]
 meta={
-    'NAME' : 'lenzotti',
-    'BASEURL' : 'https://shop.lenzotti.it/',
-    'LOCATION' :['EU','Italy','Modena']
+    'NAME' : 'gambardellamusica',
+    'BASEURL' : 'https://www.gambardellamusica.it/', #BASEURL WITH BACKSLASH INCLUDED
+    'LOCATION' :['EU','Italy','gambardellamusica']
 }
 
-#AGGOINGI DECORATOR PER CARICARE DA STATIC
 def search_on_site(query):
     '''
     This method make a search request on the website.
     Return the list of pages given by the research button of the target website.
 
-    INPUT: QUERY
-    OUTPUR: LIST OF SOUPS
+    INPUT: query item
+    OUTPUT: list of soups
 
     '''
-    url = f'{meta["BASEURL"]}?s={query.search_string}&post_type=product&dgwt_wcas=1'
+    url = f'{meta["BASEURL"]}?post_type=product&s={query.search_string}'
     headers = headers = {
-        'Host':'shop.lenzotti.it:80',
+        'Host':f'{meta["BASEURL"]}:80',
         'User-Agent': 'Chrome v22.2 Linux Ubuntu',
         'Accept': '*/*',
         'Accept-Encoding': 'gzip, deflate, br',
         'Connection': 'keep-alive'
         }
 
-    response = requests.get(url = url, headers=headers)#, params = '')
+    response = requests.get(url = url, headers = headers)#, params = '')
     soup = BeautifulSoup(response.content, 'html.parser')
-    result = [soup]#+...
     #...
+    result = [soup]
     for page_i in range(2,2+query.limit):
         sleep(0.3)
         next_url = f'{meta["BASEURL"]}page/{page_i}/?s={query.search_string}&post_type=product&dgwt_wcas=1'
@@ -59,6 +58,7 @@ def record_parser(soup, query=None):
     OUTPUT: list of record objects
 
     '''
+    
     dom=etree.HTML(str(soup))
 
     xpaths_elem = lambda i: {   
@@ -91,12 +91,3 @@ def query_to_url(query):
     '''
     pass
 
-def page_iterator(soup):
-    next_soup=''
-    return next_soup
-
-def page_scroller(soup):
-    pass
-
-def build_search_url_from_query(query):
-    pass

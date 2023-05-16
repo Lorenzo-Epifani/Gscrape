@@ -8,6 +8,7 @@ from src.classes.query import Query
 from time import sleep
 from itertools import count
 
+status=["DEV"]
 meta={
     'NAME' : 'fireflyaudio',
     'BASEURL' : 'https://www.fireflyaudio.it/', #BASEURL WITH BACKSLASH INCLUDED

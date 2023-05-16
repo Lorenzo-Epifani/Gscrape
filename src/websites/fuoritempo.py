@@ -8,6 +8,7 @@ from src.classes.query import Query
 from time import sleep
 from itertools import count
 
+status=["DEV"]
 meta={
     'NAME' : 'fuoritempo',
     'BASEURL' : 'https://fuoritempo.net/', #BASEURL WITH BACKSLASH INCLUDED
