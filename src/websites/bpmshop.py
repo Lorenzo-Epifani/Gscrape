@@ -11,9 +11,9 @@ from itertools import count
 
 status=["DEV"]
 meta={
-    'NAME' : 'name',
-    'BASEURL' : 'baseurl', #BASEURL WITH BACKSLASH INCLUDED
-    'LOCATION' :['EU','Italy','city']
+    'NAME' : 'bpmshop',
+    'BASEURL' : 'https://bpmshop.it/', #BASEURL WITH BACKSLASH INCLUDED
+    'LOCATION' :['EU','Italy','Bari']
 }
 
 def search_on_site(query):
