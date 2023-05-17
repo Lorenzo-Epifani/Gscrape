@@ -23,3 +23,19 @@ def get_regex(reg_name):
     if result == None:
         raise Exception('REGEX_NAME_ERROR')
     return result
+
+def make_dotdict(_dict):
+    class dotdict(dict):
+        """dot.notation access to dictionary attributes"""
+        __getattr__ = dict.get
+        __setattr__ = dict.__setitem__
+        __delattr__ = dict.__delitem__
+
+    for k,v in _dict.items():
+        if type(v) is dict:
+            _dict[k]=make_dotdict(v)
+    _dict=dotdict(_dict)
+    return _dict
+
+
+    

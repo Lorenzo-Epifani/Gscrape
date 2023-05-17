@@ -1,0 +1,57 @@
+
+class STATUS:
+    USED = 1
+    NEW = 2
+
+class CAT:
+    class GUITAR:
+        SOLID = 1
+        SEMI_HOLLOW = 2
+        ACOUSTIC = 3
+        CLASSIC = 4
+    class BASS:
+        SOLID = 1
+        SEMI_HOLLOW = 2
+        ACOUSTIC = 3
+    class AMP:
+        HEAD_CONE = 1
+        COMBO = 2
+
+#print(getattr(CAT.AMP,'HEAD_CONE'))
+
+
+#NICE BUT I DON T WANT TO SET THE AT RUNTIME! I WANT AUTOCOMPLETION   
+def comment1():
+    '''
+    class Category:
+    def __init__(self,kv_list) -> None:
+        for k,v in kv_list:
+            setattr(self,k,v) 
+
+    categories_schema = {
+        'GUITAR':{
+            'SOLID':1,
+            'SEMI_HOLLOW':2,
+            'ACOUSTIC':3,
+            'CLASSIC':4
+        },
+        'BASS':{
+            'SOLID':1,
+            'SEMI_HOLLOW':2,
+            'ACOUSTIC':3
+        },
+        'AMP':{
+        'HEAD_CONE':1,
+        'COMBO':2
+        }
+    }
+
+
+    categories_schema=make_dotdict(categories_schema)
+    '''
+    pass
+
+
+   
+
+
