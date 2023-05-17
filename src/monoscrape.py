@@ -14,12 +14,11 @@ def scrape(context):
     sitelist = [name for _, name, _ in pkgutil.iter_modules(src.websites.__path__)]
     result=[]
     for site in sitelist:
-        if site=='default__IGNORE':#while programming
+        agent_template = import_module(f'src.websites.{site}','.') 
+        if 'DEV' in agent_template.status:
             continue
-        if site!='':#while programming
-            agent_template = import_module(f'src.websites.{site}','.') 
-            agent = WebAgent(agent_template, pre=False)
-            result.append({'source':agent_template.meta, 'content':agent.get_product_by_query(query)})
+        agent = WebAgent(agent_template, pre=False)
+        result.append({'source':agent_template.meta, 'content':agent.get_product_by_query(query)})
     return result
 
 

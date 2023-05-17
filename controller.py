@@ -4,6 +4,11 @@ import sys
 from src.monoscrape import scrape 
 import config
 from pprint import pprint
+from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
+
+import uvicorn
+
 #print(config.entry['conf1'])
 #print(config.global_conf)
 cmd_to_f={}
@@ -43,18 +48,36 @@ def _search_all(context):
     _LOC takes values from config/function1/value.json
     _GLB takes values from config/global.json
     '''
-    scrape(context)
+    return scrape(context)
 
 
-@set_config('function2')
-def s2_count(context):
+@set_config('server_start')
+def start_fapi(context):
     '''
     Write your code here.
     This will be executed with 'function2' as command line argument.
     _LOC takes values from config/function2/value.json
     _GLB takes values from config/global.json
     '''
-    pass
+    app = FastAPI()
+    origins = [
+    "http://localhost:3000",  # Indica l'origine del frontend React
+    # Altre origini consentite se necessario
+    ]
+
+    app.add_middleware(
+        CORSMiddleware,
+        allow_origins=origins,
+        allow_credentials=True,
+        allow_methods=["GET", "POST", "PUT", "DELETE"],
+        allow_headers=["*"],
+    )
+    @app.get("/default")
+    def default(query):
+        result = _search_all({'_LOC':{"query":query}})
+        return result
+    uvicorn.run(app, host="localhost", port=8000)
+
 
 
 @set_config('debug')

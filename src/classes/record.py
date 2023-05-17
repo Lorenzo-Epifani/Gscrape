@@ -1,7 +1,9 @@
 from enum import Enum
 from src.utils import make_dotdict
+import src.classes.labels
+
 class Record:
-    def __init__(self, prod_name, price, link, img=None, category=None) -> None:
+    def __init__(self, prod_name, price, link, img = None, category = None) -> None:
         self.prod_name = prod_name
         self.price = price
         self.link = link

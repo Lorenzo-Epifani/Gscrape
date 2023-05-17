@@ -1,4 +1,4 @@
-
+import src.classes.labels
 
 class Query:
     def __init__(self,search_string=None,

@@ -6,7 +6,8 @@ from src.classes.record import Record
 from src.classes.query import Query
 from time import sleep
 from itertools import count
-
+from src.utils import get_regex
+import re
 status=["OK"]
 meta={
     'NAME' : 'gasmusicstore',
@@ -24,7 +25,7 @@ def search_on_site(query):
     OUTPUR: LIST OF SOUPS
 
     '''
-    url = f'{meta["BASEURL"]}?post_type=product&s={query.search_string}'
+    url = f'{meta["BASEURL"]}?post_type=product&s={query.search_string}&_screma_i_prodotti=usato-negozio'
     response = requests.get(url = url)#, params = '')
     soup = BeautifulSoup(response.content, 'html.parser')
     results = [soup]#+...
@@ -67,14 +68,15 @@ def record_parser(soup, query=None):
     result = []
     for i,_r in enumerate(web_items):
         _r['prod_name'] = _r['prod_name'][0]
-        _r['link'] = _r['link'][0].attrib
+        _r['link'] = _r['link'][0].attrib['href']
         _r['price'] = _r['price'][0] if len(_r['price'])>0 else 'N/A'
         images=_r['img'][0]
-        if images.attrib.has_key('srcset'):
-            images = images.attrib['srcset'].split(', ')
-            _r['img'] = [_el.split(' ') for _el in images][0][0]
-        else:
-            _r['img'] = [{'std':images.attrib['src']}]
+        #if images.attrib.has_key('srcset'):
+        #    images = images.attrib['srcset'].split(', ')
+        #    _r['img'] = [_el.split(' ') for _el in images][0][0]
+        #else:
+        _r['img'] = [images.attrib['src']]
+        #_r['img'] = re.search(get_regex('gms_1'),_r['img']).groups()[0]
         result.append(Record(**_r))
     #pprint(records)
     #print(len(records))

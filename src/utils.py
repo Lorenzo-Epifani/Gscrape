@@ -16,9 +16,10 @@ def load_soup(name,query):
 def get_regex(reg_name):
     reg_dict={
         'lenzotti_1': re.compile(r'di ([0-9]+)-([0-9]+) di'),
+        'gms_1': re.compile(r'(.+\.(jpg|png))'),
         "example":re.compile(r'_([^_]+)_[^._]+\.jp2')
     }
-
+    #USAGE EX
     result = reg_dict.get(reg_name, None)
     if result == None:
         raise Exception('REGEX_NAME_ERROR')

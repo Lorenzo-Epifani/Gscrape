@@ -4,6 +4,7 @@
     // Per altre informazioni, visitare: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
+
         {
             "name": "Search All",
             "type": "python",
@@ -12,6 +13,15 @@
             "args": ["search_all"],
             "console": "integratedTerminal",
             "justMyCode": true
-        }
+        },
+        {
+            "name": "start server",
+            "type": "python",
+            "request": "launch",
+            "program": "main.py",
+            "args": ["server_start"],
+            "console": "integratedTerminal",
+            "justMyCode": true
+        },
     ]
 }

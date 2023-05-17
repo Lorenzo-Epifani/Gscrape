@@ -1,23 +1,32 @@
 
+import inspect
+
 class STATUS:
-    USED = 1
-    NEW = 2
+    USED = 'USED'
+    NEW = 'NEW'
 
 class CAT:
     class GUITAR:
-        SOLID = 1
-        SEMI_HOLLOW = 2
-        ACOUSTIC = 3
-        CLASSIC = 4
+        SOLID =  'SOLID'
+        SEMI_HOLLOW = 'SEMI_HOLLOW'
+        ACOUSTIC = 'ACOUSTIC'
+        CLASSIC = 'CLASSIC'
     class BASS:
-        SOLID = 1
-        SEMI_HOLLOW = 2
-        ACOUSTIC = 3
+        SOLID = 'SOLID'
+        SEMI_HOLLOW = 'SEMI_HOLLOW'
+        ACOUSTIC = 'ACOUSTIC'
     class AMP:
-        HEAD_CONE = 1
-        COMBO = 2
-
-#print(getattr(CAT.AMP,'HEAD_CONE'))
+        HEAD_CONE = 'HEAD_CONE'
+        COMBO = 'COMBO'
+    for cls in [GUITAR,BASS,AMP]:
+        #print(inspect.getmembers(cls))
+        for attr in inspect.getmembers(cls):
+            if type(attr) == tuple and all([True if type(el)== str else False for el in attr]):
+                setattr(cls, attr[0], (cls.__name__,attr[0])) 
+            else:
+                break
+          
+#print(CAT.AMP.HEAD_CONE)
 
 
 #NICE BUT I DON T WANT TO SET THE AT RUNTIME! I WANT AUTOCOMPLETION   
@@ -49,7 +58,6 @@ def comment1():
 
     categories_schema=make_dotdict(categories_schema)
     '''
-    pass
 
 
    
