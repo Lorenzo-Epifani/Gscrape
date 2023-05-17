@@ -1,3 +1,6 @@
+from enum import Enum
+
+
 class Record:
     def __init__(self, prod_name, price, link, img=None, categ={}) -> None:
         self.prod_name = prod_name
@@ -16,4 +19,36 @@ class Record:
             "img" : self.img,
             "category" : self.category
         }
+
+class Status(Enum):
+    USED = 1
+    NEW = 2
+
+class Category:
+    def __init__(self,kv_list) -> None:
+        for k,v in kv_list:
+            setattr(self,k,v) 
+    
+categories_schema=[
+    ('GUITAR',Category([
+        ('SOLID',1),
+        ('SEMI_HOLLOW',2),
+        ('ACOUSTIC',3),
+        ('CLASSIC',4)])
+        ),
+    ('BASS',Category([
+        ('SOLID',1),
+        ('SEMI_HOLLOW',2),
+        ('ACOUSTIC',3)])
+        ),
+    ('AMP',Category([
+        ('HEAD_CONE',1),
+        ('COMBO',2)])
+        )
+]
+
+CATEGORIES = Category(categories_schema)
+print(CATEGORIES.GUITAR.SOLID)
+
+   
 
